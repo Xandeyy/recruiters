@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "recruiters"
+version = "0.1.0"
+description = ""
+authors = ["Sandesh Neupane <sandeshpkr977@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0"
+django-cors-headers = "^4.3.1"
+djangorestframework = "^3.14.0"
+djangorestframework-simplejwt = "^5.3.1"
+knox = "^0.1.14"
+jinja2 = "^3.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
