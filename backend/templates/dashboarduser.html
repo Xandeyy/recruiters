@@ -1,0 +1,87 @@
+{% extends "base.html" %} {% block title %}User Dashboard{% endblock %} {% block
+content %}
+<div class="container mx-auto px-6 py-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">
+        Welcome, John Doe
+      </h3>
+      <p class="text-gray-600">Your current profile completion: 80%</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">
+        Total Jobs Applied
+      </h3>
+      <p class="text-gray-600">15 jobs applied</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Jobs in Progress</h3>
+      <p class="text-gray-600">5 jobs under review</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">New Messages</h3>
+      <p class="text-gray-600">3 unread messages</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Recommended Jobs</h3>
+      <div class="grid gap-4 mt-4">
+        <div class="flex items-center">
+          <div class="w-8 h-8 bg-gray-200 rounded-full mr-4"></div>
+          <div>
+            <h4 class="font-semibold">Frontend Developer</h4>
+            <p class="text-gray-600">Company A</p>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-8 h-8 bg-gray-200 rounded-full mr-4"></div>
+          <div>
+            <h4 class="font-semibold">UX Designer</h4>
+            <p class="text-gray-600">Company B</p>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-8 h-8 bg-gray-200 rounded-full mr-4"></div>
+          <div>
+            <h4 class="font-semibold">Data Analyst</h4>
+            <p class="text-gray-600">Company C</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">
+        Recent Applications
+      </h3>
+      <div class="mt-4">
+        <div class="flex items-center mb-4">
+          <div class="w-8 h-8 bg-gray-200 rounded-full mr-4"></div>
+          <div>
+            <h4 class="font-semibold">Frontend Developer</h4>
+            <p class="text-gray-600">Company A</p>
+            <p class="text-sm text-gray-400">Applied: 2024-06-15</p>
+          </div>
+        </div>
+        <div class="flex items-center mb-4">
+          <div class="w-8 h-8 bg-gray-200 rounded-full mr-4"></div>
+          <div>
+            <h4 class="font-semibold">UX Designer</h4>
+            <p class="text-gray-600">Company B</p>
+            <p class="text-sm text-gray-400">Applied: 2024-06-14</p>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-8 h-8 bg-gray-200 rounded-full mr-4"></div>
+          <div>
+            <h4 class="font-semibold">Data Analyst</h4>
+            <p class="text-gray-600">Company C</p>
+            <p class="text-sm text-gray-400">Applied: 2024-06-10</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -12,6 +12,7 @@ class CompanyBase(BaseModel):
 
 class CompanyCreate(CompanyBase):
     password: str
+    confirm_password:str
 
 class Company(CompanyBase):
     id: int
@@ -28,6 +29,7 @@ class ApplicantBase(BaseModel):
 
 class ApplicantCreate(ApplicantBase):
     password: str
+    confirm_password:str
 
 class Applicant(ApplicantBase):
     id: int

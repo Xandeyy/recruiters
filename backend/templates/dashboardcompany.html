@@ -1,0 +1,94 @@
+{% extends "base.html" %} {% block title %}Company Dashboard{% endblock %} {%
+block content %}
+<div class="container mx-auto px-6 py-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">
+        Welcome, Company XYZ
+      </h3>
+      <p class="text-gray-600">Your subscription plan: Premium</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">
+        Total Resumes Received
+      </h3>
+      <p class="text-gray-600">250 resumes received</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">
+        Resumes in Screening
+      </h3>
+      <p class="text-gray-600">50 resumes in screening</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">
+        Interview Scheduled
+      </h3>
+      <p class="text-gray-600">10 interviews scheduled</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Recent Resumes</h3>
+      <div class="mt-4">
+        <div class="flex items-center mb-4">
+          <div class="w-8 h-8 bg-gray-200 rounded-full mr-4"></div>
+          <div>
+            <h4 class="font-semibold">John Doe</h4>
+            <p class="text-gray-600">Position: Frontend Developer</p>
+            <p class="text-sm text-gray-400">Received: 2024-06-15</p>
+          </div>
+        </div>
+        <div class="flex items-center mb-4">
+          <div class="w-8 h-8 bg-gray-200 rounded-full mr-4"></div>
+          <div>
+            <h4 class="font-semibold">Jane Smith</h4>
+            <p class="text-gray-600">Position: UX Designer</p>
+            <p class="text-sm text-gray-400">Received: 2024-06-14</p>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-8 h-8 bg-gray-200 rounded-full mr-4"></div>
+          <div>
+            <h4 class="font-semibold">Michael Johnson</h4>
+            <p class="text-gray-600">Position: Data Analyst</p>
+            <p class="text-sm text-gray-400">Received: 2024-06-10</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">
+        Screening Dashboard
+      </h3>
+      <div class="mt-4">
+        <div class="flex items-center mb-4">
+          <div class="w-8 h-8 bg-gray-200 rounded-full mr-4"></div>
+          <div>
+            <h4 class="font-semibold">Jane Smith</h4>
+            <p class="text-gray-600">Position: UX Designer</p>
+            <p class="text-sm text-gray-400">Screening Status: In Progress</p>
+          </div>
+        </div>
+        <div class="flex items-center mb-4">
+          <div class="w-8 h-8 bg-gray-200 rounded-full mr-4"></div>
+          <div>
+            <h4 class="font-semibold">Michael Johnson</h4>
+            <p class="text-gray-600">Position: Data Analyst</p>
+            <p class="text-sm text-gray-400">Screening Status: Completed</p>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-8 h-8 bg-gray-200 rounded-full mr-4"></div>
+          <div>
+            <h4 class="font-semibold">John Doe</h4>
+            <p class="text-gray-600">Position: Frontend Developer</p>
+            <p class="text-sm text-gray-400">Screening Status: Pending</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

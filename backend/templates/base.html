@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Recruiters{% endblock %}</title>
+    <!-- Include Tailwind CSS (you can link it from a CDN or install it locally) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md">
+      <div
+        class="container mx-auto flex items-center justify-between py-4 px-6"
+      >
+        <div class="flex items-center">
+          <img src="static/image/logo.png" alt="logo" class="h-12" />
+          <input
+            type="text"
+            placeholder="Search Jobs..."
+            class="ml-4 px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div class="flex items-center space-x-6">
+          <a href="#" class="text-gray-600 hover:text-gray-800">Home</a>
+          <div class="relative group">
+            <button class="text-gray-600 hover:text-gray-800">Product</button>
+            <ul
+              class="hidden absolute right-0 mt-2 space-y-2 bg-white border rounded-lg shadow-lg group-hover:block"
+            >
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100"
+                  >Screening</a
+                >
+              </li>
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100"
+                  >Recruitment</a
+                >
+              </li>
+            </ul>
+          </div>
+          <a href="loginuser.html" class="text-blue-500 hover:underline"
+            >Login</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Your content goes here -->
+    <div class="container mx-auto p-4">
+      {% block content %}
+      <!-- Content placeholder -->
+      {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-2">
+      <div class="container flex justify-between items-start px-3">
+        <div class="flex items-center">
+          <img src="static/image/logo.png" alt="logo" class="h-13" />
+        </div>
+        <div class="space-y-4">
+          <h3 class="text-white font-semibold">Product</h3>
+          <ul class="text-gray-400">
+            <li><a href="#" class="hover:text-white">Overview</a></li>
+            <li><a href="#" class="hover:text-white">Pricing</a></li>
+            <li><a href="#" class="hover:text-white">Marketplace</a></li>
+            <li><a href="#" class="hover:text-white">Features</a></li>
+            <li><a href="#" class="hover:text-white">Integrations</a></li>
+          </ul>
+        </div>
+        <div class="space-y-4">
+          <h3 class="text-white font-semibold">Company</h3>
+          <ul class="text-gray-400">
+            <li><a href="#" class="hover:text-white">About</a></li>
+            <li><a href="#" class="hover:text-white">Team</a></li>
+            <li><a href="#" class="hover:text-white">Blog</a></li>
+            <li><a href="#" class="hover:text-white">Careers</a></li>
+          </ul>
+        </div>
+        <div class="space-y-4">
+          <h3 class="text-white font-semibold">Connect</h3>
+          <ul class="text-gray-400">
+            <li><a href="#" class="hover:text-white">Contact</a></li>
+            <li><a href="#" class="hover:text-white">Newsletter</a></li>
+            <li><a href="#" class="hover:text-white">Instagram</a></li>
+            <li><a href="#" class="hover:text-white">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center text-gray-500">
+        Project given by
+        <a
+          href="https://pu.edu.np/"
+          target="_blank"
+          class="underline text-gray-400 hover:text-white"
+          >Pokhara University</a
+        >. Coded by
+        <a href="#" class="underline text-gray-400 hover:text-white"
+          >Recruiters group members</a
+        >.
+      </div>
+    </footer>
+  </body>
+</html>
