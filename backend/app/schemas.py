@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from typing import Optional
 from datetime import datetime
 
@@ -13,6 +13,7 @@ class CompanyBase(BaseModel):
 class CompanyCreate(CompanyBase):
     password: str
     confirm_password:str
+    email_confirmed: bool 
 
 class Company(CompanyBase):
     id: int
@@ -34,11 +35,14 @@ class ApplicantCreate(ApplicantBase):
 class Applicant(ApplicantBase):
     id: int
     is_active: bool
+    email_confirmed: bool 
 
     class Config:
         orm_mode = True
 
-
+class EmailSchema(BaseModel):
+    email: EmailStr
+    
 #schema for jobs
 class JobBase(BaseModel):
     title: str

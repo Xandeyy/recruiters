@@ -1,15 +1,32 @@
-# from fastapi import Depends, HTTPException, status, Request
-# from fastapi.security import OAuth2PasswordBearer
-# from sqlalchemy.orm import Session
-# import jwt
-# from jwt import PyJWTError
-# from . import models, schemas, database
-# from .config import settings
+from fastapi import Depends, HTTPException, status, Request
+from fastapi.security import OAuth2PasswordBearer
+from sqlalchemy.orm import Session
+import jwt
+from jwt import PyJWTError
+from . import models, schemas, database
+from .config import settings
+import datetime
 
-# oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login_company")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login_company")
 
-# SECRET_KEY = settings.SECRET_KEY
-# ALGORITHM = settings.ALGORITHM
+SECRET_KEY = settings.SECRET_KEY
+ALGORITHM = settings.ALGORITHM
+
+
+def create_confirmation_token(email):
+    payload = {
+        'email': email,
+        'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=24)  # Token valid for 24 hours
+    }
+    token = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
+    return token
+
+def verify_confirmation_token(token):
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        return payload.get('email')
+    except jwt.JWTError:
+        return None
 
 # def get_current_company(request: Request, db: Session = Depends(database.get_db)):
 #     credentials_exception = HTTPException(
@@ -39,20 +56,20 @@
 #     return company
 
 
-# # def get_current_applicant(db: Session = Depends(database.get_db), token: str = Depends(oauth2_scheme)):
-# #     credentials_exception = HTTPException(
-# #         status_code=status.HTTP_401_UNAUTHORIZED,
-# #         detail="Could not validate credentials",
-# #         headers={"WWW-Authenticate": "Bearer"},
-# #     )
-# #     try:
-# #         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-# #         email: str = payload.get("sub")
-# #         if email is None:
-# #             raise credentials_exception
-# #     except JWTError:
-# #         raise credentials_exception
-# #     applicant = db.query(models.Applicant).filter(models.Applicant.email == email).first()
-# #     if applicant is None:
-# #         raise credentials_exception
-# #     return applicant
+# def get_current_applicant(db: Session = Depends(database.get_db), token: str = Depends(oauth2_scheme)):
+#     credentials_exception = HTTPException(
+#         status_code=status.HTTP_401_UNAUTHORIZED,
+#         detail="Could not validate credentials",
+#         headers={"WWW-Authenticate": "Bearer"},
+#     )
+#     try:
+#         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+#         email: str = payload.get("sub")
+#         if email is None:
+#             raise credentials_exception
+#     except JWTError:
+#         raise credentials_exception
+#     applicant = db.query(models.Applicant).filter(models.Applicant.email == email).first()
+#     if applicant is None:
+#         raise credentials_exception
+#     return applicant

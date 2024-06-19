@@ -24,6 +24,7 @@ class Applicant(Base):
     email = Column(String(255), unique=True, index=True, nullable=False)
     password = Column(String(255), nullable=False)
     is_active = Column(Boolean, default=False)
+    email_confirmed = Column(Boolean, default=False)
     
     resumes = relationship("Resume", back_populates="applicant")
     
