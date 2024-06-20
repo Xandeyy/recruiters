@@ -59,11 +59,19 @@
               class="dropdown-content hidden absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg"
             >
               <li>
+                {% if user.is_company %}
+                <a
+                  href="dashboardcompany.html"
+                  class="block px-4 py-2 text-gray-600 hover:bg-gray-100"
+                  >Dashboard</a
+                >
+                {% else %}
                 <a
                   href="dashboarduser.html"
                   class="block px-4 py-2 text-gray-600 hover:bg-gray-100"
                   >Dashboard</a
                 >
+                {% endif %}
               </li>
               <li>
                 <a

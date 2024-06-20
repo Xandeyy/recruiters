@@ -113,13 +113,6 @@ def logout(response: Response):
     response.delete_cookie(key="access_token")
     return response
  
-@app.get("/dashboarduser.html", response_class=HTMLResponse)
-async def dashboard_user(request: Request):
-    return templates.TemplateResponse("dashboarduser.html", {"request": request})
-
-@app.get("/dashboardcompany.html", response_class=HTMLResponse)
-async def dashboard_company(request: Request):
-    return templates.TemplateResponse("dashboardcompany.html", {"request": request})
 
 @app.get("/confirm_user_email")
 async def confirm_user_email(token: str, db: Session = Depends(get_db)):
