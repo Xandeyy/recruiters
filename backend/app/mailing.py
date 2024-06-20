@@ -3,8 +3,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 def send_user_confirmation_email(to_email, confirmation_token):
-    YOUR_GOOGLE_EMAIL = 'sandeshxandey0@gmail.com'
-    YOUR_GOOGLE_EMAIL_APP_PASSWORD = 'wmof vicx oxyv xfzo'
+    YOUR_GOOGLE_EMAIL = 'recruiters788@gmail.com'
+    YOUR_GOOGLE_EMAIL_APP_PASSWORD = 'uicl ojlm pinv hgzv'
 
     smtpserver = smtplib.SMTP_SSL('smtp.gmail.com', 465)
     smtpserver.ehlo()
