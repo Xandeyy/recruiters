@@ -12,10 +12,12 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from .config import settings
+from .auth import AuthMiddleware
 from fastapi.responses import RedirectResponse
 from .mailing import send_user_confirmation_email, send_company_confirmation_email
 
 app = FastAPI()
+app.add_middleware(AuthMiddleware)
 templates= Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
@@ -67,28 +69,45 @@ def create_access_token(data: dict, expires_delta: timedelta = None):
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    user = request.state.user
+    return templates.TemplateResponse("index.html", {"request": request, "user": user})
 
 @app.get("/base.html", response_class=HTMLResponse)
 async def read_root(request: Request):
-    return templates.TemplateResponse("base.html", {"request": request})
+    user = request.state.user
+    return templates.TemplateResponse("base.html", {"request": request, "user": user})
 
 @app.get("/loginuser.html", response_class=HTMLResponse)
 async def read_root(request: Request):
-    return templates.TemplateResponse("loginuser.html", {"request": request})
+    user = request.state.user
+    return templates.TemplateResponse("loginuser.html", {"request": request, "user": user})
 
 @app.get("/logincompany.html", response_class=HTMLResponse)
 async def read_root(request: Request):
-    return templates.TemplateResponse("logincompany.html", {"request": request})
+    user = request.state.user
+    return templates.TemplateResponse("logincompany.html", {"request": request, "user": user})
 
 @app.get("/signupcompany.html", response_class=HTMLResponse)
 async def read_root(request: Request):
-    return templates.TemplateResponse("signupcompany.html", {"request": request})
+    user = request.state.user
+    return templates.TemplateResponse("signupcompany.html", {"request": request, "user": user})
 
 @app.get("/signupuser.html", response_class=HTMLResponse)
 async def read_root(request: Request):
-    return templates.TemplateResponse("signupuser.html", {"request": request})
+    user = request.state.user
+    return templates.TemplateResponse("signupuser.html", {"request": request, "user": user})
 
+@app.get("/dashboarduser.html", response_class=HTMLResponse)
+async def dashboard_user(request: Request):
+    user = request.state.user
+    return templates.TemplateResponse("dashboarduser.html", {"request": request, "user":user})\
+        
+@app.get("/logout")
+def logout(response: Response):
+    response = RedirectResponse(url="/")
+    response.delete_cookie(key="access_token")
+    return response
+ 
 @app.get("/dashboarduser.html", response_class=HTMLResponse)
 async def dashboard_user(request: Request):
     return templates.TemplateResponse("dashboarduser.html", {"request": request})
@@ -258,6 +277,12 @@ def login_applicant_for_access_token(response: Response, form_data: OAuth2Passwo
     response = RedirectResponse(url="/dashboarduser.html", status_code=status.HTTP_303_SEE_OTHER)
     response.set_cookie(key="access_token", value=access_token, httponly=True, secure=True)
     return response
+
+
+
+
+
+
 
 
 

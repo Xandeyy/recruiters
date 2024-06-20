@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}Recruiters{% endblock %}</title>
-    <!-- Include Tailwind CSS (you can link it from a CDN or install it locally) -->
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
@@ -43,9 +42,43 @@
               </li>
             </ul>
           </div>
+          {% if user.is_authenticated %}
+          <div class="relative">
+            <button
+              class="dropdown-button flex items-center space-x-2 text-gray-600 hover:text-gray-800 focus:outline-none"
+              onclick="toggleDropdown()"
+            >
+              <img
+                src="static/image/settingicon.png"
+                alt="Settings"
+                class="w-6 h-6"
+              />
+            </button>
+            <ul
+              id="dropdown-menu"
+              class="dropdown-content hidden absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg"
+            >
+              <li>
+                <a
+                  href="dashboarduser.html"
+                  class="block px-4 py-2 text-gray-600 hover:bg-gray-100"
+                  >Dashboard</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/logout"
+                  class="block px-4 py-2 text-gray-600 hover:bg-gray-100"
+                  >Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+          {% endif %} {% if not user.is_authenticated %}
           <a href="loginuser.html" class="text-blue-500 hover:underline"
             >Login</a
           >
+          {% endif %}
         </div>
       </div>
     </nav>
@@ -105,5 +138,7 @@
         >.
       </div>
     </footer>
+
+    <script src="static/scripts/script.js"></script>
   </body>
 </html>
