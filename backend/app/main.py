@@ -100,7 +100,12 @@ async def read_root(request: Request):
 @app.get("/dashboarduser.html", response_class=HTMLResponse)
 async def dashboard_user(request: Request):
     user = request.state.user
-    return templates.TemplateResponse("dashboarduser.html", {"request": request, "user":user})\
+    return templates.TemplateResponse("dashboarduser.html", {"request": request, "user":user})
+
+@app.get("/dashboardcompany.html", response_class=HTMLResponse)
+async def dashboard_user(request: Request):
+    user = request.state.user
+    return templates.TemplateResponse("dashboardcompany.html", {"request": request, "user":user})
         
 @app.get("/logout")
 def logout(response: Response):

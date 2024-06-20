@@ -39,10 +39,11 @@ class AuthMiddleware(BaseHTTPMiddleware):
                 payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
                 request.state.user = {"email": payload.get("sub"), "is_authenticated": True}
             except jwt.ExpiredSignatureError:
-                request.state.user = {"is_authenticated": False}
+                request.state.user = {"email": None, "is_authenticated": False}
             except (jwt.JWTError, PyJWTError):
-                request.state.user = {"is_authenticated": False}
+                request.state.user = {"email": None, "is_authenticated": False}
         else:
-            request.state.user = {"is_authenticated": False}
+            request.state.user = {"email": None, "is_authenticated": False}
         response = await call_next(request)
         return response
+

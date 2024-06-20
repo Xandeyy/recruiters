@@ -4,18 +4,23 @@ function toggleDropdown() {
   dropdownMenu.classList.toggle("hidden");
 }
 
-// Close the dropdown if clicked outside of it
+// Function to toggle the company dropdown menu
+function toggleCompanyDropdown() {
+  var companyDropdownMenu = document.getElementById("company-dropdown-menu");
+  companyDropdownMenu.classList.toggle("hidden");
+}
+
+// Close the dropdowns if clicked outside of them
 window.onclick = function (event) {
   if (
     !event.target.matches(".dropdown-button") &&
     !event.target.closest(".dropdown-button")
   ) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    for (var i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (!openDropdown.classList.contains("hidden")) {
-        openDropdown.classList.add("hidden");
+    var dropdowns = document.querySelectorAll(".dropdown-content");
+    dropdowns.forEach(function (dropdown) {
+      if (!dropdown.classList.contains("hidden")) {
+        dropdown.classList.add("hidden");
       }
-    }
+    });
   }
 };
