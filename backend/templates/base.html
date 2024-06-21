@@ -16,7 +16,7 @@
         class="container mx-auto flex items-center justify-between py-4 px-6"
       >
         <div class="flex items-center">
-          <img src="static/image/logo.png" alt="logo" class="h-12" />
+          <img src="/static/image/logo.png" alt="logo" class="h-12" />
           <input
             type="text"
             placeholder="Search Jobs..."
@@ -24,7 +24,8 @@
           />
         </div>
         <div class="flex items-center space-x-6">
-          <a href="#" class="text-gray-600 hover:text-gray-800">Home</a>
+          {% if is_dashboard_company %}
+          <!-- Company Navbar (no Home button) -->
           <div class="relative group">
             <button class="text-gray-600 hover:text-gray-800">Product</button>
             <ul
@@ -42,14 +43,34 @@
               </li>
             </ul>
           </div>
-          {% if user.is_authenticated %}
+          {% else %}
+          <!-- User Navbar (with Home button) -->
+          <a href="/" class="text-gray-600 hover:text-gray-800">Home</a>
+          <div class="relative group">
+            <button class="text-gray-600 hover:text-gray-800">Product</button>
+            <ul
+              class="hidden absolute right-0 mt-2 space-y-2 bg-white border rounded-lg shadow-lg group-hover:block"
+            >
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100"
+                  >Screening</a
+                >
+              </li>
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100"
+                  >Recruitment</a
+                >
+              </li>
+            </ul>
+          </div>
+          {% endif %} {% if user.is_authenticated %}
           <div class="relative">
             <button
               class="dropdown-button flex items-center space-x-2 text-gray-600 hover:text-gray-800 focus:outline-none"
               onclick="toggleDropdown()"
             >
               <img
-                src="static/image/settingicon.png"
+                src="/static/image/settingicon.png"
                 alt="Settings"
                 class="w-6 h-6"
               />
@@ -58,21 +79,15 @@
               id="dropdown-menu"
               class="dropdown-content hidden absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg"
             >
+              {% if not is_dashboard_company %}
               <li>
-                {% if user.is_company %}
-                <a
-                  href="dashboardcompany.html"
-                  class="block px-4 py-2 text-gray-600 hover:bg-gray-100"
-                  >Dashboard</a
-                >
-                {% else %}
                 <a
                   href="dashboarduser.html"
                   class="block px-4 py-2 text-gray-600 hover:bg-gray-100"
                   >Dashboard</a
                 >
-                {% endif %}
               </li>
+              {% endif %}
               <li>
                 <a
                   href="/logout"
@@ -102,7 +117,7 @@
     <footer class="bg-gray-800 py-2">
       <div class="container flex justify-between items-start px-3">
         <div class="flex items-center">
-          <img src="static/image/logo.png" alt="logo" class="h-13" />
+          <img src="/static/image/logo.png" alt="logo" class="h-13" />
         </div>
         <div class="space-y-4">
           <h3 class="text-white font-semibold">Product</h3>
@@ -147,6 +162,6 @@
       </div>
     </footer>
 
-    <script src="static/scripts/script.js"></script>
+    <script src="/static/scripts/script.js"></script>
   </body>
 </html>
