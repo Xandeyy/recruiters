@@ -1,0 +1,99 @@
+{% extends "base.html" %} {% block title %}Home - Recruiters{% endblock %} {%
+    block extra_head %}
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+    </style>
+    {% endblock %} {% block content %}
+
+    <body class="bg-gray-100">
+
+        <!-- Header -->
+        <header class="bg-white p-4 text-center rounded-full">
+            <h1 class="text-2xl font-bold text-black">Job Search Portal</h1>
+        </header>
+    
+        <!-- Main Content -->
+        <main class="container mx-auto mt-10 p-4">
+            
+            <!-- Job Listings -->
+            <div class="space-y-4">
+                <div class="bg-white p-4 rounded-md shadow-md">
+                    <h2 class="text-xl font-bold">Flutter Developer</h2>
+                    <p class="text-gray-600">Company XYZ - Remote, Full-time</p>
+                    <button class="mt-2 bg-green-600 text-white p-2 rounded-md hover:bg-green-700 apply-btn">Apply Now</button>
+                </div>
+    
+                <!-- Other job listings can be added here similarly -->
+            </div>
+        </main>
+    
+        <!-- Modal -->
+        <div class="modal fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center" id="applyModal">
+            <div class="bg-white rounded-lg shadow-lg p-8 w-4/5 h-4/5 overflow-y-auto">
+                <h2 class="text-2xl font-bold mb-4">Flutter Developer</h2>
+                <p class="text-gray-600 mb-4">Company XYZ - Remote, Full-time</p>
+                <div class="mb-4">
+                    <h3 class="font-semibold">Company Description</h3>
+                    <p>Hi there! We are Priority Soft. We build mobile applications using Flutter and are currently looking to expand our team.</p>
+                </div>
+                <div class="mb-4">
+                    <h3 class="font-semibold">Role Description</h3>
+                    <p>This is a full-time remote role for a Flutter Developer. The Flutter Developer will be responsible for the development and implementation of mobile applications using the Flutter framework. They will collaborate with cross-functional teams to design, develop, and maintain high-quality Flutter applications. The Flutter Developer will also perform debugging, testing, and code reviews to ensure application functionality and code quality.</p>
+                </div>
+                <div class="mb-4">
+                    <h3 class="font-semibold">Qualifications</h3>
+                    <ul class="list-disc list-inside">
+                        <li>Computer Science and Software Development skills</li>
+                        <li>Experience in Back-End Web Development</li>
+                        <li>Proficiency in Programming and Object-Oriented Programming (OOP)</li>
+                        <li>Knowledge of mobile application development using Flutter</li>
+                        <li>Experience with version control systems (e.g., Git)</li>
+                        <li>Excellent problem-solving and analytical skills</li>
+                        <li>Strong attention to detail and ability to work independently</li>
+                        <li>Effective communication and teamwork skills</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h3 class="font-semibold">Salary</h3>
+                    <p>Starting salary would be $800/month</p>
+                </div>
+                <input type="file" class="mb-4 border border-gray-300 p-2 rounded-md w-full" id="resumeUpload">
+                <button class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 w-full mb-4">Submit Resume</button>
+                <button class="bg-red-600 text-white p-2 rounded-md hover:bg-red-700 w-full" id="closeModal">Close</button>
+            </div>
+        </div>
+    
+    
+    
+        <script>
+            const applyButtons = document.querySelectorAll('.apply-btn');
+            const modal = document.getElementById('applyModal');
+            const closeModal = document.getElementById('closeModal');
+    
+            applyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    modal.style.display = 'flex';
+                });
+            });
+    
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+    
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        </script>
+    </body>
+    </html>
+    
+    {% endblock %}
+    

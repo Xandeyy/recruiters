@@ -138,6 +138,11 @@ async def confirm_user_email(token: str, db: Session = Depends(get_db)):
         print(f"Exception occurred: {str(e)}")
         raise HTTPException(status_code=500, detail="Internal server error")
     
+@app.get("/mainpage.html", response_class=HTMLResponse)
+async def read_root(request: Request):
+    user = request.state.user
+    return templates.TemplateResponse("mainpage.html", {"request": request, "user": user})  
+
 @app.get("/confirm_company_email")
 async def confirm_company_email(token: str, db: Session = Depends(get_db)):
     try:
